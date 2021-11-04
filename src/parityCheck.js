@@ -1,25 +1,25 @@
-import readlineSyns from 'readline-sync';
+import {
+  round,
+  greetingInTheGame, questionAnswer, winTheGame,
+} from './cli.js';
 
-const getAnswer = () => readlineSyns.question('Your answer: ');
+const getRandomNumber = () => {
+  const arrValues = [];
+  for (let i = 0; i < round; i += 1) {
+    const key = Math.floor(Math.random() * 100);
+    let value;
+    if (key % 2 === 0) value = 'yes';
+    else value = 'no';
+    arrValues.push([key, value]);
+  }
+  return arrValues;
+};
 
-const getRandomNumber = () => Math.floor(Math.random() * 100);
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSyns.question('May I have your name? ');
+  greetingInTheGame();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  let count = 0;
-  while (count < 3) {
-    const num = getRandomNumber();
-    console.log(`Question: ${num}`);
-    const answer = getAnswer();
-    if ((num % 2 === 0 && answer === 'yes') || (num % 2 !== 0 && answer === 'no')) {
-      console.log('Correct!');
-      count += 1;
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was 'no')`);
-      return;
-    }
-  }
-  console.log(`Congratualaions, ${userName}!`);
+  const arrValues = getRandomNumber();
+  questionAnswer(arrValues);
+  winTheGame();
 };
