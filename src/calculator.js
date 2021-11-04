@@ -1,7 +1,7 @@
 import {
   round,
-  greetingInTheGame, questionAnswer, winTheGame,
-} from './cli.js';
+  greetingInTheGame, questionAnswer,
+} from './index.js';
 
 const maxNumber = 25;
 const arrSign = ['+', '-', '*'];
@@ -40,5 +40,4 @@ export default () => {
 
   const arrValues = getRandomExpression();
   questionAnswer(arrValues);
-  winTheGame();
 };

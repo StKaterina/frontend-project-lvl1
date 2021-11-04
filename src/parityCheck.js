@@ -1,7 +1,7 @@
 import {
   round,
-  greetingInTheGame, questionAnswer, winTheGame,
-} from './cli.js';
+  greetingInTheGame, questionAnswer,
+} from './index.js';
 
 const getRandomNumber = () => {
   const arrValues = [];
@@ -21,5 +21,4 @@ export default () => {
 
   const arrValues = getRandomNumber();
   questionAnswer(arrValues);
-  winTheGame();
 };
