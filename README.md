@@ -3,14 +3,17 @@
 
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
+<h2>Installation:</h2>
+<p>Clone this repository to your computer. At the command line, install the package <code>sudo npm link</code> (Node.js must be installed)</p>
+
 <h2>To start the game, enter one of the following commands in the console:</h2>
 <ul>
-  <li>brain-games</li>
-  <li>brain-even</li>
-  <li>brain-calc</li>
-  <li>brain-gcd</li>
-  <li>brain-progression</li>
-  <li>brain-prime</li>
+  <li><code>brain-games</code></li>
+  <li><code>brain-even</code></li>
+  <li><code>brain-calc</code></li>
+  <li><code>brain-gcd</code></li>
+  <li><code>brain-progression</code></li>
+  <li><code>brain-prime</code></li>
 </ul>
 
 <h2>Asciinemas</h2>
