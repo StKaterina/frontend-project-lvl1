@@ -13,7 +13,7 @@ export const greetingInTheGame = () => {
 const getAnswer = () => readlineSyns.question('Your answer: ');
 
 export const winTheGame = () => {
-  console.log(`Congratualaions, ${userName}!`);
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export const questionAnswer = (arrValues) => {
