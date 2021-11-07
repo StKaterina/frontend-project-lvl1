@@ -19,7 +19,7 @@ const getRandomNumber = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
     const key = getRandomInt(minNumber, maxNumber);
-    const value = isPrime(key);
+    const value = isPrime(key) ? 'yes' : 'no';
     arrValues.push([key, value]);
   }
   return arrValues;
