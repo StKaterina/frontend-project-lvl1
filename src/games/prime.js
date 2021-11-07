@@ -7,22 +7,19 @@ import {
 const minNumber = 1;
 const maxNumber = 100;
 
+const isPrime = (num) => {
+  if (num < 2) return false;
+  if (num % 2 === 0) return false;
+  let d = 3;
+  while (d * d <= num && num % d !== 0) d += 2;
+  return d * d > num;
+};
+
 const getRandomNumber = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
     const key = getRandomInt(minNumber, maxNumber);
-    let value;
-    if (key % 2 === 0) {
-      arrValues.push([key, 'no']);
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-    let d = 3;
-    while (d * d <= key && key % d !== 0) {
-      d += 2;
-    }
-    if (d * d > key) value = 'yes';
-    else value = 'no';
+    const value = isPrime(key);
     arrValues.push([key, value]);
   }
   return arrValues;
