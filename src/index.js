@@ -2,25 +2,19 @@ import readlineSyns from 'readline-sync';
 
 export const round = 3;
 
-let userName = '';
+export const getRandomInt = (min = 1, max = 100) => Math.floor(Math.random() * (max - min) + min);
 
-export const greetingInTheGame = () => {
+export const playGame = (arrValues, ruleGame) => {
   console.log('Welcome to the Brain Games!');
-  userName = readlineSyns.question('May I have your name? ');
+  const userName = readlineSyns.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-};
+  console.log(ruleGame);
 
-const getAnswer = () => readlineSyns.question('Your answer: ');
-
-export const winTheGame = () => {
-  console.log(`Congratulations, ${userName}!`);
-};
-
-export const questionAnswer = (arrValues) => {
   /* eslint-disable-next-line */
   for (const [key, value] of arrValues) {
     console.log(`Question: ${key}`);
-    const answer = getAnswer();
+    const answer = readlineSyns.question('Your answer: ');
+
     if (value === answer) {
       console.log('Correct!');
     } else {
@@ -29,5 +23,5 @@ export const questionAnswer = (arrValues) => {
       return;
     }
   }
-  winTheGame();
+  console.log(`Congratulations, ${userName}!`);
 };

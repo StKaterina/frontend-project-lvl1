@@ -1,20 +1,21 @@
 import {
   round,
-  greetingInTheGame, questionAnswer,
-} from './index.js';
+  getRandomInt,
+  playGame,
+} from '../index.js';
 
+const minNumber = 1;
 const maxNumber = 25;
 const arrSign = ['+', '-', '*'];
 
-const getRandomInt = () => Math.floor(Math.random() * maxNumber);
 const getRandomSign = () => arrSign[Math.floor(Math.random() * arrSign.length)];
 
 const getRandomExpression = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    const num1 = getRandomInt();
+    const num1 = getRandomInt(minNumber, maxNumber);
     const sign = getRandomSign();
-    const num2 = getRandomInt();
+    const num2 = getRandomInt(minNumber, maxNumber);
     const key = `${num1} ${sign} ${num2}`;
     let value;
     switch (sign) {
@@ -35,9 +36,7 @@ const getRandomExpression = () => {
 };
 
 export default () => {
-  greetingInTheGame();
-  console.log('What is the result of the expression?');
-
+  const ruleGame = 'What is the result of the expression?';
   const arrValues = getRandomExpression();
-  questionAnswer(arrValues);
+  playGame(arrValues, ruleGame);
 };

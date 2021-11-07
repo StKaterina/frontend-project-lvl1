@@ -1,20 +1,22 @@
 import {
   round,
-  greetingInTheGame, questionAnswer,
-} from './index.js';
+  getRandomInt,
+  playGame,
+} from '../index.js';
 
+const minNumber = 1;
 const maxNumber = 25;
+
 const minLength = 5;
 const maxLength = 10;
 
-const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
-const getPositionPass = (max) => Math.floor(Math.random() * max);
-const getRandomInt = () => Math.floor(Math.random() * maxNumber);
+const minStep = 2;
+const maxStep = 5;
 
 const oneSequencesNumbers = (lengthProgr) => {
   const sequences = [];
-  const oneElement = getRandomInt();
-  const step = getRandomNumber(2, 5);
+  const oneElement = getRandomInt(minNumber, maxNumber);
+  const step = getRandomInt(minStep, maxStep);
   for (let i = 0, j = oneElement; i < lengthProgr; i += 1, j += step) {
     sequences.push(j);
   }
@@ -24,10 +26,10 @@ const oneSequencesNumbers = (lengthProgr) => {
 const getRandomProgression = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    const lengthProgr = getRandomNumber(minLength, maxLength);
+    const lengthProgr = getRandomInt(minLength, maxLength);
     const sequences = oneSequencesNumbers(lengthProgr);
 
-    const numPosition = getPositionPass(lengthProgr);
+    const numPosition = getRandomInt(minNumber, lengthProgr);
     const value = sequences[numPosition];
 
     sequences[numPosition] = '..';
@@ -39,9 +41,7 @@ const getRandomProgression = () => {
 };
 
 export default () => {
-  greetingInTheGame();
-  console.log('What number is missing in the progression?');
-
+  const ruleGame = 'What number is missing in the progression?';
   const arrValues = getRandomProgression();
-  questionAnswer(arrValues);
+  playGame(arrValues, ruleGame);
 };

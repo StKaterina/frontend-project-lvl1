@@ -1,17 +1,17 @@
 import {
   round,
-  greetingInTheGame, questionAnswer,
-} from './index.js';
+  getRandomInt,
+  playGame,
+} from '../index.js';
 
+const minNumber = 1;
 const maxNumber = 25;
-
-const getRandomInt = () => Math.floor(Math.random() * maxNumber);
 
 const getRandomTwoNumber = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    let num1 = getRandomInt();
-    let num2 = getRandomInt();
+    let num1 = getRandomInt(minNumber, maxNumber);
+    let num2 = getRandomInt(minNumber, maxNumber);
     const key = `${num1} ${num2}`;
     while (num1 !== 0 && num2 !== 0) {
       if (num1 > num2) num1 %= num2;
@@ -24,9 +24,7 @@ const getRandomTwoNumber = () => {
 };
 
 export default () => {
-  greetingInTheGame();
-  console.log('Find the greatest common divisor of given numbers.');
-
+  const ruleGame = 'Find the greatest common divisor of given numbers.';
   const arrValues = getRandomTwoNumber();
-  questionAnswer(arrValues);
+  playGame(arrValues, ruleGame);
 };

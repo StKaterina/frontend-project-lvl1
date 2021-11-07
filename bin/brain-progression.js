@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import arifmeticProgression from '../src/insertNumber.js';
+import arifmeticProgression from '../src/games/progression.js';
 
 // арифметическая прогрессия
 arifmeticProgression();
