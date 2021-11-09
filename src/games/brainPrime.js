@@ -5,21 +5,21 @@ import {
 
 import getRandomInt from '../getRandom.js';
 
-const minNumber = 1;
+const ruleGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const maxNumber = 100;
 
 const isPrime = (num) => {
   if (num < 2) return false;
-  if (num % 2 === 0) return false;
-  let d = 3;
-  while (d * d <= num && num % d !== 0) d += 2;
-  return d * d > num;
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) return false;
+  }
+  return true;
 };
 
 const getRandomNumber = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    const key = getRandomInt(minNumber, maxNumber);
+    const key = getRandomInt(1, maxNumber);
     const value = isPrime(key) ? 'yes' : 'no';
     arrValues.push([key, value]);
   }
@@ -27,7 +27,6 @@ const getRandomNumber = () => {
 };
 
 export default () => {
-  const ruleGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
   const arrValues = getRandomNumber();
   playGame(arrValues, ruleGame);
 };

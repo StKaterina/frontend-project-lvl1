@@ -13,13 +13,13 @@ export const playGame = (arrValues, ruleGame) => {
     console.log(`Question: ${key}`);
     const answer = readlineSyns.question('Your answer: ');
 
-    if (value === answer) {
-      console.log('Correct!');
-    } else {
+    if (value !== answer) {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${value}')`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
+
+    console.log('Correct!');
   }
   console.log(`Congratulations, ${userName}!`);
 };

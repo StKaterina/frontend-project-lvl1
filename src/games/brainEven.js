@@ -5,23 +5,22 @@ import {
 
 import getRandomInt from '../getRandom.js';
 
-const minNumber = 1;
+const ruleGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 const maxNumber = 100;
+
+const isEven = (key) => key % 2 === 0;
 
 const getRandomNumber = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    const key = getRandomInt(minNumber, maxNumber);
-    let value;
-    if (key % 2 === 0) value = 'yes';
-    else value = 'no';
+    const key = getRandomInt(1, maxNumber);
+    const value = isEven(key) ? 'yes' : 'no';
     arrValues.push([key, value]);
   }
   return arrValues;
 };
 
 export default () => {
-  const ruleGame = 'Answer "yes" if the number is even, otherwise answer "no".';
   const arrValues = getRandomNumber();
   playGame(arrValues, ruleGame);
 };

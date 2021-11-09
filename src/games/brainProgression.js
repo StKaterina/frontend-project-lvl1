@@ -5,21 +5,15 @@ import {
 
 import getRandomInt from '../getRandom.js';
 
-const minNumber = 1;
+const ruleGame = 'What number is missing in the progression?';
 const maxNumber = 25;
-
-const minLength = 5;
-const maxLength = 10;
-
-const minStep = 2;
-const maxStep = 5;
 
 const oneSequencesNumbers = (lengthProgr) => {
   const sequences = [];
-  const oneElement = getRandomInt(minNumber, maxNumber);
-  const step = getRandomInt(minStep, maxStep);
-  for (let i = 0, j = oneElement; i < lengthProgr; i += 1, j += step) {
-    sequences.push(j);
+  const oneElement = getRandomInt(1, maxNumber);
+  const step = getRandomInt(2, 5);
+  for (let i = 0; i < lengthProgr; i += 1) {
+    sequences.push(oneElement + i * step);
   }
   return sequences;
 };
@@ -27,10 +21,10 @@ const oneSequencesNumbers = (lengthProgr) => {
 const getRandomProgression = () => {
   const arrValues = [];
   for (let i = 0; i < round; i += 1) {
-    const lengthProgr = getRandomInt(minLength, maxLength);
+    const lengthProgr = getRandomInt(5, 10);
     const sequences = oneSequencesNumbers(lengthProgr);
 
-    const numPosition = getRandomInt(minNumber, lengthProgr);
+    const numPosition = getRandomInt(1, lengthProgr);
     const value = sequences[numPosition];
 
     sequences[numPosition] = '..';
@@ -42,7 +36,6 @@ const getRandomProgression = () => {
 };
 
 export default () => {
-  const ruleGame = 'What number is missing in the progression?';
   const arrValues = getRandomProgression();
   playGame(arrValues, ruleGame);
 };
