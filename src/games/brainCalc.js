@@ -1,8 +1,9 @@
 import {
   round,
-  getRandomInt,
   playGame,
 } from '../index.js';
+
+import getRandomInt from '../getRandom.js';
 
 const minNumber = 1;
 const maxNumber = 25;

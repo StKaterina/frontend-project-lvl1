@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import GameCalculator from '../src/games/calc.js';
+import GameCalculator from '../src/games/brainCalc.js';
 
 // калькулятор
 GameCalculator();
