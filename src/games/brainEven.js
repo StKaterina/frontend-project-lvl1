@@ -3,24 +3,18 @@ import {
   playGame,
 } from '../index.js';
 
-import getRandomInt from '../getRandom.js';
+import getRandomInt from '../getRandomInt.js';
 
 const ruleGame = 'Answer "yes" if the number is even, otherwise answer "no".';
-const maxNumber = 100;
 
-const isEven = (key) => key % 2 === 0;
-
-const getRandomNumber = () => {
-  const arrValues = [];
-  for (let i = 0; i < round; i += 1) {
-    const key = getRandomInt(1, maxNumber);
-    const value = isEven(key) ? 'yes' : 'no';
-    arrValues.push([key, value]);
-  }
-  return arrValues;
-};
+const isEven = (correctQuestion) => correctQuestion % 2 === 0;
 
 export default () => {
-  const arrValues = getRandomNumber();
-  playGame(arrValues, ruleGame);
+  const roundsData = [];
+  for (let i = 0; i < round; i += 1) {
+    const correctQuestion = getRandomInt(1, 100);
+    const correctAnswer = isEven(correctQuestion) ? 'yes' : 'no';
+    roundsData.push([correctQuestion, correctAnswer]);
+  }
+  playGame(roundsData, ruleGame);
 };

@@ -3,29 +3,20 @@ import {
   playGame,
 } from '../index.js';
 
-import getRandomInt from '../getRandom.js';
+import getRandomInt from '../getRandomInt.js';
 
 const ruleGame = 'Find the greatest common divisor of given numbers.';
-const maxNumber = 25;
 
-const getNOD = (num1, num2) => {
-  if (num2 === 0) return num1;
-  return getNOD(num2, num1 % num2);
-};
-
-const getRandomTwoNumber = () => {
-  const arrValues = [];
-  for (let i = 0; i < round; i += 1) {
-    const num1 = getRandomInt(1, maxNumber);
-    const num2 = getRandomInt(1, maxNumber);
-    const key = `${num1} ${num2}`;
-    const value = String(getNOD(num1, num2));
-    arrValues.push([key, value.toString()]);
-  }
-  return arrValues;
-};
+const getNOD = (a, b) => (b === 0 ? a : getNOD(b, a % b));
 
 export default () => {
-  const arrValues = getRandomTwoNumber();
-  playGame(arrValues, ruleGame);
+  const roundsData = [];
+  for (let i = 0; i < round; i += 1) {
+    const num1 = getRandomInt(1, 25);
+    const num2 = getRandomInt(1, 25);
+    const correctQuestion = `${num1} ${num2}`;
+    const correctAnswer = String(getNOD(num1, num2));
+    roundsData.push([correctQuestion, correctAnswer.toString()]);
+  }
+  playGame(roundsData, ruleGame);
 };

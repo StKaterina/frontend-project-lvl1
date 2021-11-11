@@ -3,10 +3,9 @@ import {
   playGame,
 } from '../index.js';
 
-import getRandomInt from '../getRandom.js';
+import getRandomInt from '../getRandomInt.js';
 
 const ruleGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const maxNumber = 100;
 
 const isPrime = (num) => {
   if (num < 2) return false;
@@ -16,17 +15,12 @@ const isPrime = (num) => {
   return true;
 };
 
-const getRandomNumber = () => {
-  const arrValues = [];
-  for (let i = 0; i < round; i += 1) {
-    const key = getRandomInt(1, maxNumber);
-    const value = isPrime(key) ? 'yes' : 'no';
-    arrValues.push([key, value]);
-  }
-  return arrValues;
-};
-
 export default () => {
-  const arrValues = getRandomNumber();
-  playGame(arrValues, ruleGame);
+  const roundsData = [];
+  for (let i = 0; i < round; i += 1) {
+    const correctQuestion = getRandomInt(1, 100);
+    const correctAnswer = isPrime(correctQuestion) ? 'yes' : 'no';
+    roundsData.push([correctQuestion, correctAnswer]);
+  }
+  playGame(roundsData, ruleGame);
 };
