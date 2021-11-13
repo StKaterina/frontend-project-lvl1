@@ -1,5 +1,5 @@
 import {
-  round,
+  numberRounds,
   playGame,
 } from '../index.js';
 
@@ -19,7 +19,7 @@ const generateProgression = (lengthProgr) => {
 
 export default () => {
   const roundsData = [];
-  for (let i = 0; i < round; i += 1) {
+  for (let i = 0; i < numberRounds; i += 1) {
     const lengthProgr = getRandomInt(5, 10);
     const sequences = generateProgression(lengthProgr);
 
@@ -27,9 +27,9 @@ export default () => {
     const correctAnswer = sequences[numPosition];
 
     sequences[numPosition] = '..';
-    const correctQuestion = sequences.join(' ');
+    const question = sequences.join(' ');
 
-    roundsData.push([correctQuestion, correctAnswer.toString()]);
+    roundsData.push([question, correctAnswer.toString()]);
   }
   playGame(roundsData, ruleGame);
 };

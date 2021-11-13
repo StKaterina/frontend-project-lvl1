@@ -1,6 +1,6 @@
 import readlineSyns from 'readline-sync';
 
-export const round = 3;
+export const numberRounds = 3;
 
 export const playGame = (roundsData, ruleGame) => {
   console.log('Welcome to the Brain Games!');
@@ -9,8 +9,8 @@ export const playGame = (roundsData, ruleGame) => {
   console.log(ruleGame);
 
   /* eslint-disable-next-line */
-  for (const [correctQuestion, correctAnswer] of roundsData) {
-    console.log(`Question: ${correctQuestion}`);
+  for (const [question, correctAnswer] of roundsData) {
+    console.log(`Question: ${question}`);
     const answerUser = readlineSyns.question('Your answer: ');
 
     if (correctAnswer !== answerUser) {

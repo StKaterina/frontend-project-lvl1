@@ -1,5 +1,5 @@
 import {
-  round,
+  numberRounds,
   playGame,
 } from '../index.js';
 
@@ -17,10 +17,10 @@ const isPrime = (num) => {
 
 export default () => {
   const roundsData = [];
-  for (let i = 0; i < round; i += 1) {
-    const correctQuestion = getRandomInt(1, 100);
-    const correctAnswer = isPrime(correctQuestion) ? 'yes' : 'no';
-    roundsData.push([correctQuestion, correctAnswer]);
+  for (let i = 0; i < numberRounds; i += 1) {
+    const question = getRandomInt(1, 100);
+    const correctAnswer = isPrime(question) ? 'yes' : 'no';
+    roundsData.push([question, correctAnswer]);
   }
   playGame(roundsData, ruleGame);
 };

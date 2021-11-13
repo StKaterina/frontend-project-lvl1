@@ -1,5 +1,5 @@
 import {
-  round,
+  numberRounds,
   playGame,
 } from '../index.js';
 
@@ -11,31 +11,26 @@ const arrSign = ['+', '-', '*'];
 const getRandomSign = () => arrSign[getRandomInt(0, arrSign.length)];
 
 const makeCalc = (num1, sign, num2) => {
-  let correctAnswer;
   switch (sign) {
     case '+':
-      correctAnswer = num1 + num2;
-      break;
+      return num1 + num2;
     case '-':
-      correctAnswer = num1 - num2;
-      break;
+      return num1 - num2;
     case '*':
-      correctAnswer = num1 * num2;
-      break;
-    default: break;
+      return num1 * num2;
+    default: return null;
   }
-  return correctAnswer;
 };
 
 export default () => {
   const roundsData = [];
-  for (let i = 0; i < round; i += 1) {
+  for (let i = 0; i < numberRounds; i += 1) {
     const num1 = getRandomInt(1, 25);
     const sign = getRandomSign();
     const num2 = getRandomInt(1, 25);
-    const correctQuestion = `${num1} ${sign} ${num2}`;
+    const question = `${num1} ${sign} ${num2}`;
     const correctAnswer = makeCalc(num1, sign, num2);
-    roundsData.push([correctQuestion, correctAnswer.toString()]);
+    roundsData.push([question, correctAnswer.toString()]);
   }
   playGame(roundsData, ruleGame);
 };
